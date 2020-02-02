@@ -6,6 +6,6 @@
   "author": "Carlos Daneil Rigoni <danrigoni1982@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "readline-sync": "^1.4.10"
   }
 }

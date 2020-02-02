@@ -1,6 +1,9 @@
-const express = require('express');
+const robots = {
+    askMode: require('./src/askMode.js'),
+}
 
-const app = express();
+function start() {
+    robots.askMode()
+}
 
-app.listen(3001);
-
+start()
