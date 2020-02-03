@@ -2,22 +2,51 @@ const readline = require('readline-sync')
 const state = require('./state.js')
 
 function robot() {
-    const content = {
-        mode: ''
-    }
+    const content = {}
     
     content.mode = askAndReturnMode()
-    state.save(content)
+    content.league = askAndReturnLeague()
+
+    switch (content.mode) {
+        case 1 :
+            content.teams = [askAndReturnTeams()]
+            content.teams.push(askAndReturnTeams())
+            break;
+        case 2 :
+            content.teams = [askAndReturnTeams()]
+            content.teams.push(askAndReturnTeams())
+            break;
+        default:
+            console.log('ok -1');
+    }
+
     
     function askAndReturnMode() {
         const prefixes = ['League', 'Best of five', 'Best of one']
-        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one option: ')
+        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one mode: ')
+
+        return selectedPrefixIndex
+    }
+
+    function askAndReturnLeague() {
+        const prefixes = ['LCK', 'LPL', 'LEC', 'LCS',] 
+        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one league: ')
+
         const selectedPrefixText = prefixes[selectedPrefixIndex]
 
-        console.log(selectedPrefixText);
         return selectedPrefixText
     }
 
-}
+    function askAndReturnTeams() {
+        const prefixes = ['SK Telecom T1', 'DAMWOM Gaming', 'GEN.G', 'Afreeca Freecs',]
+        const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one team: ')
+
+        const selectedPrefixText = prefixes[selectedPrefixIndex]
+
+        return selectedPrefixText
+    }
+
+    state.save(content)
+}   
 
 module.exports = robot
