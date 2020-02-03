@@ -7,19 +7,12 @@ function robot() {
     content.mode = askAndReturnMode()
     content.league = askAndReturnLeague()
 
-    switch (content.mode) {
-        case 1 :
-            content.teams = [askAndReturnTeams()]
-            content.teams.push(askAndReturnTeams())
-            break;
-        case 2 :
-            content.teams = [askAndReturnTeams()]
-            content.teams.push(askAndReturnTeams())
-            break;
-        default:
-            console.log('ok -1');
-    }
+    checkAndSaveTeams(content)
 
+    state.save(content)
+    
+    }
+    
     
     function askAndReturnMode() {
         const prefixes = ['League', 'Best of five', 'Best of one']
@@ -29,6 +22,8 @@ function robot() {
     }
 
     function askAndReturnLeague() {
+        // check league here
+        
         const prefixes = ['LCK', 'LPL', 'LEC', 'LCS',] 
         const selectedPrefixIndex = readline.keyInSelect(prefixes, 'Choose one league: ')
 
@@ -46,7 +41,20 @@ function robot() {
         return selectedPrefixText
     }
 
-    state.save(content)
+    function checkAndSaveTeams(content) {
+        switch (content.mode) {
+            case 1 :
+                content.teams = [askAndReturnTeams()]
+                content.teams.push(askAndReturnTeams())
+                break;
+            case 2 :
+                content.teams = [askAndReturnTeams()]
+                content.teams.push(askAndReturnTeams())
+                break;
+            default:
+                console.log('ok -1');
+    }
+
 }   
 
 module.exports = robot

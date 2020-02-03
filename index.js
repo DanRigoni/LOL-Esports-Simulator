@@ -1,10 +1,10 @@
 const robots = {
-    askMode: require('./robots/input'),
+    input: require('./robots/input'),
     state: require('./robots/state.js')
 }
 
 function start() {
-    robots.askMode()
+    robots.input()
 
     const content = robots.state.load()
 
