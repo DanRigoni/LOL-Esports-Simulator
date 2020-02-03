@@ -1,9 +1,13 @@
 const readline = require('readline-sync')
+const state = require('./state.js')
 
 function robot() {
-    const options = {mode: ''}
+    const content = {
+        mode: ''
+    }
     
-    options.mode = askAndReturnMode()
+    content.mode = askAndReturnMode()
+    state.save(content)
     
     function askAndReturnMode() {
         const prefixes = ['League', 'Best of five', 'Best of one']
