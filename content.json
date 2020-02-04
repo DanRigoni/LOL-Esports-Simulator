@@ -1,1 +1,1 @@
-{"mode":1,"league":"LCK","teams":["DAMWOM Gaming","GEN.G"]}
+{"input":{"mode":1,"league":"LCK","teams":["SK Telecom T1","DAMWOM Gaming"]},"rift":{"blueSide":{"topTower":4,"midTower":4,"botTower":4,"baseTower":true,"nexus":true},"redSide":{"topTower":4,"midTower":4,"botTower":4,"baseTower":true,"nexus":true},"neutral":{"time":0,"dragon":false,"herald":false,"baron":false,"returnDragon":0,"returnHerald":0,"returnBaron":0}}}
