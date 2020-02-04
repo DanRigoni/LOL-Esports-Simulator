@@ -1,5 +1,4 @@
 const readline = require('readline-sync')
-const state = require('./state.js')
 
 function robot() {
     const content = {}
@@ -9,8 +8,7 @@ function robot() {
 
     checkAndSaveTeams(content)
 
-    state.save(content)
-    
+    return content
     }
     
     
@@ -51,8 +49,6 @@ function robot() {
                 content.teams = [askAndReturnTeams()]
                 content.teams.push(askAndReturnTeams())
                 break;
-            default:
-                console.log('ok -1');
     }
 
 }   
