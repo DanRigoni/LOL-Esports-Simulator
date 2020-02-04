@@ -1,4 +1,3 @@
-const readline = require('readline-sync')
 class Rift {
     constructor() {
         this.topTower = 4
@@ -113,16 +112,6 @@ class Neutral {
 
 }
 
-function startGameStructure() {
-    blueSide = new Rift()
-    redSide = new Rift()
-    neutral =  new Neutral()
-    
-    
-    state.save(blueSide)
-    state.save(redSide)
-    state.save(neutral)
-}
 
 module.exports = {
     Rift,
