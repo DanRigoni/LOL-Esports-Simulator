@@ -1,12 +1,13 @@
 
 class Team {
-    constructor(teamName, toplaner, jungler, midlaner, botlaner, support) {
+    constructor(teamName, toplaner, jungler, midlaner, botlaner, support, side) {
         this.teamName = teamName
         this.toplaner = toplaner
         this.jungler = jungler
         this.midlaner = midlaner
         this.botlaner = botlaner
         this.support = support
+        this.side = side
     }
 
     
@@ -22,6 +23,8 @@ class Player {
         this.assists = 0
 
         this.advantage = 0
+
+        this.getSkillok = this.getSkill() 
     }
 
     getSkill() {
@@ -49,6 +52,6 @@ class Player {
 }
 
 module.exports = {
-    Team,
-    Player
+    Player,
+    Team
 }

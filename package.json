@@ -1,9 +1,7 @@
 {
-  "name": "lol-esports-simulator",
+  "name": "lolsports",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/danrigoni/lol-esports-simulator.git",
-  "author": "Carlos Daneil Rigoni <danrigoni1982@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "fs": "^0.0.1-security",
