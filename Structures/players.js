@@ -16,15 +16,13 @@ class Team {
 class Player {
     constructor(name, skill) {
         this.name = name
-        this.skill = skill
+        this.skill = skill + (Math.floor(Math.random() * 7 - 3))
 
         this.kills = 0
         this.deaths = 0
         this.assists = 0
 
         this.advantage = 0
-
-        this.getSkillok = this.getSkill() 
     }
 
     getSkill() {
