@@ -47,6 +47,10 @@ class Player {
         this.assists++
         this.advantage += 0.4
     }
+
+    matchup() {
+        this.advantage ++
+    }
 }
 
 module.exports = {
