@@ -1,30 +1,8 @@
 
 function simulateGame(teamx, teamy, neutral) {
-    while (teamx.side.nexus &&  teamy.side.nexus) {
+    while (teamx.side.nexus && teamy.side.nexus) {
 
-        console.log(skillComparasionTopXTop(teamx, teamy));
-        console.log(skillComparasionJunXJun(teamx, teamy));
-        console.log(skillComparasionMidXMid(teamx, teamy));
-        console.log(skillComparasionBotXBot(teamx, teamy));
-        console.log(skillComparasionSupXSup(teamx, teamy));
-        console.log(skillComparasionTopAndJunXTopAndJun(teamx, teamy));
-        console.log(skillComparasionMidAndJunXMidAndJun(teamx, teamy));
-        console.log(skillComparasionBottomXBottom(teamx, teamy));
-        console.log(skillComparasionBottomAndJunXBottomAndJun(teamx, teamy));
-
-        soloKillTopXTop(teamx, teamy)
-        soloKillJunXJun(teamx, teamy)
-        soloKillMidXMid(teamx, teamy)
-        soloKillBotXBot(teamx, teamy)
-        soloKillSupXSup(teamx, teamy)
-        soloKillBottomXBottom(teamx, teamy)
-
-        soloKillTopXTop(teamy, teamx)
-        soloKillJunXJun(teamy, teamx)
-        soloKillMidXMid(teamy, teamx)
-        soloKillBotXBot(teamy, teamx)
-        soloKillSupXSup(teamy, teamx)
-        soloKillBottomXBottom(teamy, teamx)
+        console.log((Math.floor(Math.random() * 70)));
 
         break;
     }
@@ -105,6 +83,33 @@ function soloKillSupXSup(teamx, teamy) {
 function soloKillBottomXBottom(teamx, teamy) {
     soloKillBotXBot(teamx, teamy)
     soloKillSupXSup(teamx, teamy)
+}
+
+// matchups
+
+function matchupTopXTop(teamx) {
+    if ((Math.floor(Math.random() * 10)) > (Math.floor(Math.random() * 10))) {
+        teamx.toplaner.matchup()
+    }
+}
+
+function matchupJunXJun(teamx) {
+    if ((Math.floor(Math.random() * 10)) > (Math.floor(Math.random() * 10))) {
+        teamx.jungler.matchup()
+    }
+}
+
+function matchupMidXMid(teamx) {
+    if ((Math.floor(Math.random() * 10)) > (Math.floor(Math.random() * 10))) {
+        teamx.midlaner.matchup()
+    }
+}
+
+function matchupBottomXBottom(teamx) {
+    if ((Math.floor(Math.random() * 10)) > (Math.floor(Math.random() * 10))) {
+        teamx.botlaner.matchup()
+        teamx.support.matchup()
+    }
 }
 
 module.exports = { simulateGame }
