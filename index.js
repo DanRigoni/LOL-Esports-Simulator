@@ -1,54 +1,59 @@
+const input = require('./src/input')
+const state = require('./src/state')
+
 const { Rift, Neutral } = require('./Structures/goals')
 const { Team, Player } = require('./Structures/players')
 
+const { simulateGame } = require('./src/simulator')
 
 
-const robots = {
-    input: require('./robots/input'),
-    state: require('./robots/state.js'),
-}
+async function start() {
 
-function start() {
+    input()
 
-    const content = {}
-
-    content.input = robots.input()
-    content.gameStructure = startGameStructure()
-    
-
-    console.log(content);
-    robots.state.save(content)
-
-}
-
-function startGameStructure() {
-    const content = {}
     const blueSide = new Rift()
     const redSide = new Rift()
-    const neutral =  new Neutral()
+    const neutral = new Neutral()
 
-    const toplanerBlue =  new Player('Wunder', 86)
-    const junglerBlue =  new Player('Jankos', 82)
-    const midlanerBlue =  new Player('Perkz', 83)
-    const botlanerBlue =  new Player('Caps', 86)
-    const supportBlue =  new Player('MikiX', 80)
+    const toplnaer1 = new Player('Impact', 80)
+    const jungler1 = new Player('Broxah', 82)
+    const midlaner1 = new Player('Jensen', 83)
+    const botlaner1 = new Player('DoubleLift', 84)
+    const support1 = new Player('CoreJJ', 85)
 
-    const teamBlue = new Team('G2 Esports', toplanerBlue, junglerBlue, midlanerBlue, botlanerBlue, supportBlue)
+    const toplnaer2 = new Player('Wunder', 84)
+    const jungler2 = new Player('Jankos', 82)
+    const midlaner2 = new Player('Perkz', 83)
+    const botlaner2 = new Player('Caps', 84)
+    const support2 = new Player('Mikiyx', 80)
 
-    const toplanerRed =  new Player('TheShy', 88)
-    const junglerRed =  new Player('Leyan', 80)
-    const midlanerRed =  new Player('Rookie', 86)
-    const botlanerRed =  new Player('Puff', 81)
-    const supportRed =  new Player('Fate', 81)
+    const team1 = new Team(
+        'Team Liquid',
+        toplnaer1,
+        jungler1,
+        midlaner1,
+        botlaner1,
+        support1,
+        blueSide
+        )    
 
-    const teamRed = new Team('Invictus Gaming', toplanerRed, junglerRed, midlanerRed, botlanerRed, supportRed)
+    const team2 = new Team(
+        'G2 Esports',
+        toplnaer2,
+        jungler2,
+        midlaner2,
+        botlaner2,
+        support2,
+        redSide
+        )
 
-
-    content.teams = { teamBlue, teamRed}
-    content.rift = {blueSide, redSide, neutral}
-    return content
+   
+    simulateGame(team1, team2)
+    // const content = state.load()
+    // console.log(team1, team2);
+    // console.log(neutral);
+    // console.log(content);
 
 }
 
-start()
-
+start() 
