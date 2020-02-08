@@ -9,7 +9,7 @@ const { simulateGame } = require('./src/simulator')
 
 async function start() {
 
-    input()
+    // input()
 
     const blueSide = new Rift()
     const redSide = new Rift()
@@ -21,7 +21,7 @@ async function start() {
     const botlaner1 = new Player('DoubleLift', 84)
     const support1 = new Player('CoreJJ', 85)
 
-    const toplnaer2 = new Player('Wunder', 84)
+    const toplnaer2 = new Player('Wunder', 85)
     const jungler2 = new Player('Jankos', 82)
     const midlaner2 = new Player('Perkz', 83)
     const botlaner2 = new Player('Caps', 84)
@@ -48,9 +48,9 @@ async function start() {
         )
 
    
-    simulateGame(team1, team2)
+    simulateGame(team1, team2, neutral)
     // const content = state.load()
-    // console.log(team1, team2);
+    console.log(team1, team2);
     // console.log(neutral);
     // console.log(content);
 
