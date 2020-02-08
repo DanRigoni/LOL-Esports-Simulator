@@ -44,6 +44,14 @@ function skillComparasionBottomAndJunXBottomAndJun(teamx, teamy) {
     return teamx.botlaner.getSkill() + teamx.support.getSkill() + teamx.jungler.getSkill() > teamy.botlaner.getSkill() + teamy.support.getSkill() + teamy.jungler.getSkill()
 }
 
+function skillComparasionMidAndTopXMidAndTop(teamx, teamy) {
+    return teamx.midlaner.getSkill() + teamx.toplaner.getSkill() > teamy.midlaner.getSkill() + teamy.toplaner.getSkill()
+}
+
+function skillComparasionMidAndBottomXMidAndBottom(teamx, teamy) {
+    return teamx.midlaner.getSkill() + teamx.support.getSkill() + teamx.botlaner.getSkill() > teamy.midlaner.getSkill() + teamy.support.getSkill() + teamy.botlaner.getSkill()
+}
+
 // solo kills
 function soloKillTopXTop(teamx, teamy) {
     if (skillComparasionTopXTop(teamx, teamy)) {
@@ -109,6 +117,101 @@ function matchupBottomXBottom(teamx) {
     if ((Math.floor(Math.random() * 10)) > (Math.floor(Math.random() * 10))) {
         teamx.botlaner.matchup()
         teamx.support.matchup()
+    }
+}
+
+// ganks
+
+function gankJungleTop(teamx, teamy) {
+    if (skillComparasionTopAndJunXTopAndJun(teamx, teamy)) {
+        let whoKill = Math.floor(Math.random() * 2)
+
+        if (whoKill == 0) {
+            teamx.jungler.killed()
+            teamx.toplaner.assisted()
+        } else {
+            teamx.toplaner.killed()
+            teamx.jungler.assisted()
+        }
+        teamy.toplaner.died()
+    }
+}
+
+function gankJungleMid(teamx, teamy) {
+    if (skillComparasionMidAndJunXMidAndJun(teamx, teamy)) {
+        let whoKill = Math.floor(Math.random() * 2)
+
+        if (whoKill == 0) {
+            teamx.jungler.killed()
+            teamx.midlaner.assisted()
+        } else {
+            teamx.midlaner.killed()
+            teamx.jungler.assisted()
+        }
+        teamy.midlaner.died()
+    }
+}
+
+function gankJungleBottom(teamx, teamy) {
+    if (skillComparasionBottomAndJunXBottomAndJun(teamx, teamy)) {
+        let whoKill = Math.floor(Math.random() * 2)
+        let whoDied = Math.floor(Math.random() * 2)
+
+
+        if (whoKill == 0) {
+            teamx.jungler.killed()
+            teamx.botlaner.assisted()
+            teamx.support.assisted()
+        } else {
+            teamx.botlaner.killed()
+            teamx.jungler.assisted()
+            teamx.support.assisted()
+        }
+
+        if (whoDied == 0) {
+            teamy.botlaner.died()
+        } else {
+            teamy.support.died()
+        }
+    }
+}
+
+function gankMidTop(teamx, teamy) {
+    if (skillComparasionMidAndTopXMidAndTop(teamx, teamy)) {
+        let whoKill = Math.floor(Math.random() * 2)
+
+        if (whoKill == 0) {
+            teamx.midlaner.killed()
+            teamx.toplaner.assisted()
+        } else {
+            teamx.toplaner.killed()
+            teamx.midlaner.assisted()
+        }
+        teamy.toplaner.died()
+    }
+}
+
+function gankMidBot(teamx, teamy) {
+    if (skillComparasionMidAndTopXMidAndTop(teamx, teamy)) {
+        let whoKill = Math.floor(Math.random() * 2)
+        let whoDied = Math.floor(Math.random() * 2)
+
+        if (whoKill == 0) {
+            teamx.midlaner.killed()
+            teamx.botlaner.assisted()
+            teamx.support.assisted()
+
+        } else {
+            teamx.botlaner.killed()
+            teamx.midlaner.assisted()
+            teamx.support.assisted()
+        }
+        
+        if (whoDied == 0) {
+            teamy.botlaner.died()
+        } else {
+            teamy.support.died()
+        }
     }
 }
 
