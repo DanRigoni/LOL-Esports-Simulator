@@ -51,7 +51,7 @@ async function start() {
     await simulateGame(team1, team2, neutral)
     // const content = state.load()
     console.log(team1, team2);
-    // console.log(neutral);
+    console.log(neutral);
     // console.log(content);
 
 }
