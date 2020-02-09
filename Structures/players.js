@@ -51,6 +51,18 @@ class Player {
     matchup() {
         this.advantage ++
     }
+
+    enemyTowerDown() {
+        this.advantage += 0.6
+    }
+
+    shootDownDragon() {
+        this.advantage += 0.5
+    }
+
+    shootDownBaron() {
+        this.advantage ++
+    }
 }
 
 module.exports = {

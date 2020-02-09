@@ -1,10 +1,26 @@
 
-function simulateGame(teamx, teamy, neutral) {
-    while (teamx.side.nexus && teamy.side.nexus) {
+function simulateGame(team1, team2, neutral) {
+    let ok = 1
+    while (team1.side.nexus && team2.side.nexus) {
+        // console.log((Math.floor(Math.random() * 70)));
+        console.log(neutral.time);
 
-        console.log((Math.floor(Math.random() * 70)));
+        if (ok >= 51) {
+            towerDestroyBot(team1, team2)
+            towerDestroyBot(team1, team2)
+            towerDestroyBot(team1, team2)
+            towerDestroyBot(team1, team2)
+            towerDestroyBot(team1, team2)
+            towerDestroyBot(team1, team2)
 
-        break;
+
+        }
+
+        DownDragon(team1, neutral)
+        DownHerald(team1, team2, neutral)
+        DownBaron(team1, neutral)
+        neutral.check()
+        ok++
     }
 }
 //skill comparasion
@@ -212,6 +228,71 @@ function gankMidBot(teamx, teamy) {
         } else {
             teamy.support.died()
         }
+    }
+}
+
+// Goals
+
+function getAdvantageDestroyTower(teamx) {
+    teamx.toplaner.enemyTowerDown()
+    teamx.jungler.enemyTowerDown()
+    teamx.midlaner.enemyTowerDown()
+    teamx.botlaner.enemyTowerDown()
+    teamx.support.enemyTowerDown()
+
+}
+
+function getAdvantageShootDownDragon(teamx) {
+    teamx.toplaner.shootDownDragon()
+    teamx.jungler.shootDownDragon()
+    teamx.midlaner.shootDownDragon()
+    teamx.botlaner.shootDownDragon()
+    teamx.support.shootDownDragon()
+
+}
+
+function getAdvantageShootDownBaron(teamx) {
+    teamx.toplaner.shootDownBaron()
+    teamx.jungler.shootDownBaron()
+    teamx.midlaner.shootDownBaron()
+    teamx.botlaner.shootDownBaron()
+    teamx.support.shootDownBaron()
+
+}
+
+function towerDestroyTop(teamx, teamy) {
+    teamy.side.towerTopDown()
+    getAdvantageDestroyTower(teamx)
+
+}
+
+function towerDestroyMid(teamx, teamy) {
+    teamy.side.towerMidDown()
+    getAdvantageDestroyTower(teamx)
+
+}
+
+function towerDestroyBot(teamx, teamy) {
+    teamy.side.towerBotDown()
+    getAdvantageDestroyTower(teamx)
+
+}
+
+function DownDragon(teamx, neutral) {
+    if (neutral.shootDownDragon()) {
+        getAdvantageShootDownDragon(teamx)
+    }
+}
+
+function DownHerald(teamx, teamy, neutral) {
+    if (neutral.shootDownHerald()) {
+        towerDestroyMid(teamx, teamy)
+    }
+}
+
+function DownBaron(teamx, neutral) {
+    if (neutral.shootDownBaron()) {
+        getAdvantageShootDownBaron(teamx)
     }
 }
 
